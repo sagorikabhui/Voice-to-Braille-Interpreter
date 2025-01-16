@@ -1,0 +1,319 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: -1;
+    backdrop-filter: blur(5px);
+}
+h1 {
+    text-align: center;
+    font-size: 46px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ededeb;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0e0e0f;
+    color: rgb(251, 248, 248);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1); 
+}
+#textOutput, #brailleText {
+    font-size: 34px; 
+    color: #faf2f2; 
+}
+label, select {
+    font-size: 38px; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+#textOutput, #brailleText {
+    border: 1px solid #000;  
+    padding: 10px;            
+    max-height: 150px;        
+    overflow-y: auto;         
+    background-color: #0d0c0c;  
+    color: white; 
+    margin-bottom: 15px;      
+}
+
+.output p {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+#historyOutput {
+    border: 1px solid #000;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #000;
+    background-color: #0d0d0d; 
+    color: white; 
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+button.dark-mode {
+    background-color: #333;
+    color: #ffffff;
+}
+
+.text-box {
+    width: 60%; 
+    margin: 10px auto; 
+    padding: 10px; 
+    background: rgba(0, 0, 0, 0.7); 
+    color: white; 
+    border: 2px solid #ff9800; 
+    border-radius: 5px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+
+#recognizedText,
+#brailleOutput {
+    font-size: 18px; 
+    height: auto; 
+    overflow-wrap: break-word; 
+}
+
+
+#history {
+    width: 80%; 
+    max-height: 200px; 
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.7); 
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+    padding: 20px; 
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(8, 7, 7, 0.8); 
+    padding: 10px 0;
+    z-index: 1000; 
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(249, 245, 245);
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #f6f1f1; 
+    border-bottom: 2px solid #eeefe9; 
+}
+
+nav ul li a.active {
+    color: #f2f4f0; 
+    border-bottom: 2px solid #f1f2ef;
+}
+section {
+    font-size: 20px;
+    line-height: 1.5;
+    display: none; 
+    
+}
+.card {
+    background: rgba(255, 255, 255, 0.8); 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    margin: 15px;
+    width: 80%;
+    max-width: 400px; 
+    text-align: center; 
+}
+
+
+#recognizedText, #brailleOutput, #history {
+    background: rgba(0, 0, 0, 0.5); 
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0e0e0f;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #333; 
+    transform: scale(1.05); 
+}
+
+button:active {
+    background-color: #555; 
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; 
+        padding: 15px; 
+    }
+
+    .card {
+        width: 100%; 
+        margin: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: column; 
+    }
+
+    nav ul li {
+        margin: 10px 0; 
+    }
+
+    button {
+        font-size: 14px; 
+    }
+
+    h1 {
+        font-size: 36px; 
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+#showFeedbackForm {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #070807; 
+    color: white; 
+    text-align: center;
+    text-decoration: none; 
+    border-radius: 5px; 
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+#showFeedbackForm:hover {
+    background-color: #eaf1ea; 
+}
+#darkModeToggle {
+    position: fixed; 
+    margin-top: 40px; 
+    margin-left: auto;
+    margin-right:  3px; 
+    z-index: 1000; 
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #0d0e0d; 
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    display: block;
+  }
+
+body {
+    background-color: #ffffff; 
+    color: #000000; 
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s; 
+  }
+   body[data-theme='dark'] {
+    background-color: #121212; 
+    color: #ffffff; 
+  }
+   #darkModeToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #0c0d0c; 
+    color: white;
+  }
+  button:focus, a:focus {
+    outline: 3px solid #f7f6f2; 
+  }

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Braille Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>VOICE TO BRAILLE INTERPRETER</h1>
+        <div class="language-selector">
+            <label for="language">Choose Language: </label>
+            <select id="language">
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+            </select>
+        </div>
+
+        <div class="recognition-controls">
+
+            <button id="start" onclick="startRecognition()">🎤 Start Recognition</button>
+            <button id="stop" onclick="stopRecognition()" disabled>⏹ Stop Recognition</button>
+        </div>
+
+        <div class="output">
+            <h2>Recognized Text:</h2>
+            <p id="textOutput">Speak something...</p>
+
+
+            <h2>Braille Output:</h2>
+            <p id="brailleText">...</p>
+        </div>
+
+        <div class="history">
+            <h2>History:</h2>
+            <div id="historyOutput"></div>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="contentArea">
+        <!-- Dark Mode Toggle Button -->
+        <button id="darkModeToggle">🌙 Dark Mode</button>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h2>Welcome to Voice-to-Braille Interpreter</h2>
+            <p>Convert voice input into Braille and make communication accessible for visually impaired individuals.</p>
+            <p>Explore the website to learn more about how it works and its features.</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About This Website</h2>
+            <p>Voice-to-Braille Interpreter is a project created to help visually impaired individuals access written
+                content
+                through Braille. By converting spoken words into Braille, the website makes communication and
+                information more
+                accessible.</p>
+            <p>The idea behind this project stems from the need for a practical tool that bridges the communication gap
+                between
+                the sighted and the visually impaired. We believe that technology can break barriers and provide equal
+                opportunities to everyone.</p>
+            <h3>Technology Behind the Website</h3>
+            <p>The website uses advanced speech recognition algorithms to convert spoken words into Braille. It then
+                displays
+                the corresponding Braille characters for each word in real-time.</p>
+            <h3>Our Vision</h3>
+            <p>Our goal is to make information accessible to everyone, regardless of their abilities. By leveraging
+                modern
+                technology, we strive to improve the lives of individuals who rely on Braille for reading and
+                communication.</p>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2>Features</h2>
+            <p>Our Voice-to-Braille Interpreter comes with a range of features designed to make communication accessible
+                for
+                visually impaired individuals. Here are some of the key features:</p>
+
+            <h3>1. Voice Recognition</h3>
+            <p>The website uses advanced speech recognition technology to capture spoken words and convert them into
+                text.</p>
+
+            <h3>2. Real-Time Braille Conversion</h3>
+            <p>Once the voice input is captured, it is instantly converted into Braille characters, allowing users to
+                feel the
+                content in real time.</p>
+
+            <h3>3. Easy-to-Use Interface</h3>
+            <p>The user interface is simple and intuitive, making it easy for users of all abilities to navigate the
+                site and
+                use the features effectively.</p>
+
+            <h3>4. Accessibility Features</h3>
+            <p>The website is designed with accessibility in mind, ensuring that visually impaired users can easily
+                access all
+                content through Braille conversion. It also supports screen readers and keyboard navigation.</p>
+
+            <h3>5. High Accuracy</h3>
+            <p>The speech recognition system ensures high accuracy in converting spoken words into Braille, making
+                communication
+                more reliable.</p>
+
+            <h3>6. Multiple Language Support</h3>
+            <p>Currently, our website supports voice-to-Braille conversion in two languages: <strong>Hindi</strong> and
+                <strong>English</strong>. In the future, we plan to expand the language options, allowing users to
+                communicate
+                in even more languages, further enhancing accessibility.
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feedback, or need support with the Voice-to-Braille Interpreter, feel free to
+                reach
+                out to us. We are here to help you!</p>
+
+            <h3>Email</h3>
+            <p>You can email us at: <a href="mailto:bhuisagorika@gmail.com">@bhuisagorika@gmail.com</a></p>
+
+            <h3>Feedback</h3>
+            <p>We welcome your suggestions and feedback to help improve our services. Please feel free to share your
+                thoughts
+                with us.</p>
+
+            <!-- Link to trigger feedback form visibility -->
+            <a href="#" id="showFeedbackForm" onclick="toggleFeedbackForm()">Provide Feedback</a>
+
+            <!-- Hidden Google Form (Initially hidden) -->
+            <div id="feedbackForm" style="display:none;">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSdjwkzGfYK-WNwAQn1l7n3pPHzn2P23t3SwALtB_j_k0MM1sw/viewform?embedded=true"
+                    width="100%" height="500"></iframe>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+
+    <script>
+
+        // Add event listeners to all links in the navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();  
+
+                // Get the target section id from the clicked link
+                const targetId = this.getAttribute('href').substring(1); 
+
+                // Hide all sections
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // Show the selected section
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+
+        // Function to toggle the feedback form visibility
+        function toggleFeedbackForm() {
+            const feedbackForm = document.getElementById('feedbackForm');
+
+            // If the form is currently hidden, show it
+            if (feedbackForm.style.display === 'none') {
+                feedbackForm.style.display = 'block';
+            } else {
+                feedbackForm.style.display = 'none';  
+            }
+        }
+    </script>
+</body>
+
+</html>
